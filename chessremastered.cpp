@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <stack>
 int startX, startY;
     int endX, endY;
-std::stack<int> moves;
 // Define constants for the chess pieces
 const std::string EMPTY = " *";
 const std::string PAWN = " P";
@@ -77,12 +75,11 @@ void displayChessboard() {
         }
         std::cout << std::endl;
     }
-    std::cout<<"last move: "<<moves.top();
 }
 void makemove(int startX,int startY,int endX,int endY){
     chessboard[endX][endY].symbol=chessboard[startX][startY].symbol;
     chessboard[startX][startY].symbol = EMPTY;
-    moves.push(10);
+    
 }
 bool isValidKnightMove(int startX, int startY, int endX, int endY) {
     int dx = std::abs(endX - startX);
@@ -135,7 +132,7 @@ void blackmove(){
 int main() {
     initializeChessboard();
     displayChessboard();
-    whitemove();
+    
     while(startX!=10){
     whitemove();
     //VALIDATION CONDITION FOR ROOKS
@@ -178,15 +175,13 @@ int main() {
     }
     
     displayChessboard();
-
-    // black moves from here on
    blackmove();
    if(chessboard[endX][endY].symbol==ROOK || chessboard[endX][endY].symbol==WHITEROOK){
         if(isValidRookMove(startX,startY,endX,endY)){
             makemove(startX,startY,endX,endY);
         }
         else{
-            blackmove();
+            whitemove();
         }
    }
    //validation codnition for BISHOP
@@ -195,7 +190,7 @@ int main() {
             makemove(startX,startY,endX,endY);
         }
         else{
-            blackmove();
+            whitemove();
         }
     }
     // validation condition for Knight
@@ -206,7 +201,7 @@ int main() {
         }
         else{
             std::cout<<"invalid move"<<std::endl;
-            blackmove();
+            whitemove();
         }
     }
     else if(chessboard[startX][startY].symbol==QUEEN || chessboard[startX][startY].symbol==WHITEQUEEN){
@@ -214,7 +209,7 @@ int main() {
             makemove(startX,startY,endX,endY);
         }
         else{
-            blackmove();
+            whitemove();
         }
     }
    
