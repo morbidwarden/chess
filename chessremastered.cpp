@@ -181,7 +181,7 @@ int main() {
             makemove(startX,startY,endX,endY);
         }
         else{
-            whitemove();
+            blackmove();
         }
    }
    //validation codnition for BISHOP
@@ -190,7 +190,7 @@ int main() {
             makemove(startX,startY,endX,endY);
         }
         else{
-            whitemove();
+            blackmove();
         }
     }
     // validation condition for Knight
@@ -201,7 +201,7 @@ int main() {
         }
         else{
             std::cout<<"invalid move"<<std::endl;
-            whitemove();
+            blackmove();
         }
     }
     else if(chessboard[startX][startY].symbol==QUEEN || chessboard[startX][startY].symbol==WHITEQUEEN){
@@ -209,7 +209,7 @@ int main() {
             makemove(startX,startY,endX,endY);
         }
         else{
-            whitemove();
+            blackmove();
         }
     }
    
